@@ -76,11 +76,11 @@ JS.field('Junction_ID','N')
 [JS.record(_) for _ in junction_ID]
 JS.close()
 #  creating outlet Shapafiles
-#OS = shp.Writer('Outlets')
-#OS.field('Outlet_ID','N')
-#[OS.point(_[0],_[1]) for _ in outlet_cordinates]
-#[OS.record(_) for _ in outlets]
-#OS.close()
+OS = shp.Writer('Outlets')
+OS.field('Outlet_ID','N')
+[OS.point(_[0],_[1]) for _ in outlet_cordinates]
+[OS.record(_) for _ in outlets]
+OS.close()
 with pandas.ExcelWriter('Input.xls') as writer:
     Losses.to_excel(writer, sheet_name='Canal_losses')
     input_volume.to_excel(writer, sheet_name='Volume_input')
