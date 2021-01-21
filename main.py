@@ -14,8 +14,7 @@ juns_volume=[volume[input_ids.index(_)] for _ in juns]
 junctions=copy.copy(outlets)
 junctions_volume=copy.copy(outlets_volume)
 
-Q_main=200
-# finding the active canal (means canal with water)
+# finding the active canals (some canals are not carrying any water)
 n=0
 while n<len(prev_junction):
     junction=prev_junction[outlets[n]-1]
@@ -32,6 +31,7 @@ while n<len(prev_junction):
 for _ in outlets:
     if outlets_volume[outlets.index(_)] ==0:
         q_losses[_-1]=0
+        
 # Taking inputs
 q_main=int(input("Discharge of the Main canal in m3/sec [default:200(m3/sec)] : ") or "200")
 ip=(input("Do you know the volume of water available at the Reservoir? (yes/no) [default:no] : ") or "no")
